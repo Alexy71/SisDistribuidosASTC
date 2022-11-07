@@ -34,8 +34,5 @@ public class OperacionPlataforma extends UnicastRemoteObject implements IPlatafo
        }else{aux = false;}
         
        return aux;
-    }
-
-   
-    
+    }  
 }
