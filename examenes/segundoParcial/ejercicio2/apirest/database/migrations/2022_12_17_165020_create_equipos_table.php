@@ -15,6 +15,10 @@ class CreateEquiposTable extends Migration
     {
         Schema::create('equipos', function (Blueprint $table) {
             $table->id();
+            $table->nombre();
+            $table->pais();
+            $table->jugador_estrella();
+            $table->puntaje();
             $table->timestamps();
         });
     }

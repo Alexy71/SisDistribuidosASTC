@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Equipo;
 use Illuminate\Http\Request;
+use App\Http\Requests\EquipoRequest;
 
 class EquipoController extends Controller
 {
@@ -14,28 +15,19 @@ class EquipoController extends Controller
      */
     public function index()
     {
-        //
+        return  response()->json(Ciudad::all(), 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function store(EquipoRequest $request)
     {
-        //
-    }
+        $equipo = Equipo::create($request->all());
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return response()->json(
+            ["transaccion" => true, 
+             "mensaje" => "Ciudad creada",
+             "response" => $equipo],
+            201
+        );
     }
 
     /**
@@ -46,19 +38,12 @@ class EquipoController extends Controller
      */
     public function show(Equipo $equipo)
     {
-        //
+        return response()->json($equipo, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Equipo  $equipo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Equipo $equipo)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +54,8 @@ class EquipoController extends Controller
      */
     public function update(Request $request, Equipo $equipo)
     {
-        //
+        $equipo->update($request->all());
+        return response()->json($equipo, 200);
     }
 
     /**

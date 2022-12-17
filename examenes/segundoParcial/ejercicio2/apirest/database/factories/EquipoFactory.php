@@ -14,7 +14,11 @@ class EquipoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => $this->faker->name,
+            'pais' => $this->faker->country,
+            'jugador_estrella' => $this->faker->city,
+            'puntaje' => $this->faker->numberBetween(1, 20),
+
         ];
     }
 }

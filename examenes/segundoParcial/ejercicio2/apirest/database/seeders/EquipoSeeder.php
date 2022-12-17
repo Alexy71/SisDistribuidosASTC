@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Equipo;
 
 class EquipoSeeder extends Seeder
 {
@@ -13,6 +14,6 @@ class EquipoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Equipo::factory(20)->create();
     }
 }
