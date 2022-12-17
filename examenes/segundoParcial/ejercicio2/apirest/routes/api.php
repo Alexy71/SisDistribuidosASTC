@@ -2,20 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CiudadController;
+use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\SeguridadController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::group(['middleware' => ['jwt.verify']], function () {
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/equipo',[EquipoController::class,'index']);
+Route::get('/equipo/{equipo}',[EquipoController::class,'show']);
+Route::post('/equipo',[EquipoController::class,'store']);
+Route::put('/equipo/{equipo}',[EquipoController::class,'update']);
+Route::delete('/equipo/{equipo}',[EquipoController::class,'destroy']);
 });
+
+
+Route::post('/login',[SeguridadController::class,'login']);
